@@ -663,6 +663,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1592875724}
+  - component: {fileID: 1592875725}
   m_Layer: 0
   m_Name: HeroInstaller
   m_TagString: Untagged
@@ -685,6 +686,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1745612921}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1592875725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592875723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c417dcdab147e69428e4ca7afba20d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnglishDemoGame.Scripts.Core.Installers.HeroInstaller
 --- !u!1 &1597352707
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,7 +743,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Zenject::Zenject.SceneContext
   _scriptableObjectInstallers: []
-  _monoInstallers: []
+  _monoInstallers:
+  - {fileID: 1592875725}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -820,6 +834,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2031549056}
+  - component: {fileID: 2031549057}
+  - component: {fileID: 2031549059}
+  - component: {fileID: 2031549058}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -843,6 +860,44 @@ Transform:
   - {fileID: 456729722}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2031549057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031549055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb9b65bd02ed2d4ab9402ad9cdc0903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnglishDemoGame.Scripts.Platform.PC.InputReaderPC
+  _inputActions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+--- !u!114 &2031549058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031549055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f724369c371e6546ba520e380752610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnglishDemoGame.Scripts.GamePlay.Hero.Visualization.HeroRenderer
+--- !u!114 &2031549059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031549055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a38ca1c6b16b0ed4e8815c3349ad1056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnglishDemoGame.Scripts.GamePlay.Hero.HeroController
+  moveSpeed: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
