@@ -1,3 +1,4 @@
+using EnglishDemoGame.Scripts.GamePlay.Hero.Interface;
 using EnglishDemoGame.Scripts.Platform.PC;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,15 +8,17 @@ namespace EnglishDemoGame.Scripts.GamePlay.Hero
 {
     public class HeroController : MonoBehaviour
     {
-        [SerializeField] private float moveSpeed = 5.0f;
 
+        private IHeroMover _heroMover;
         private InputReaderPC _inputReaderPC;
-        private Vector2 _currentInput; 
+        private Vector2 _currentInput;
+        
 
         [Inject]
-        public void Construct(InputReaderPC inputReaderPC)
+        public void Construct(InputReaderPC inputReaderPC, IHeroMover heroMover)
         {
             _inputReaderPC = inputReaderPC;
+            _heroMover = heroMover;
 
             Debug.LogWarning("InputReaderPC injects dependency");
         }
@@ -24,10 +27,9 @@ namespace EnglishDemoGame.Scripts.GamePlay.Hero
         {
             _inputReaderPC.MoveEvent += OnInputChanged;
         }
-        private void Update()
+        private void FixedUpdate()
         {
-            Vector3 movement = new Vector2(_currentInput.x, _currentInput.y);
-            transform.position += movement * (moveSpeed * Time.deltaTime);
+            _heroMover.Move(_currentInput);
         }
 
         private void OnDisable()
