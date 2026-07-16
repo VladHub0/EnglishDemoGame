@@ -8,7 +8,7 @@ namespace EnglishDemoGame.Scripts.Core.Installers
 {
     public class HeroInstaller : MonoInstaller
     {
-        [SerializeField] private float moveSpeed = 5.0f;
+        [SerializeField] private HeroSettings heroSettings;
         [SerializeField] private HeroController heroController;   
         [SerializeField] private Rigidbody2D heroRigidbody;      
 
@@ -24,12 +24,17 @@ namespace EnglishDemoGame.Scripts.Core.Installers
                      .FromInstance(heroRigidbody)
                      .AsSingle();
 
-           
-            Container.Bind<float>()
-                     .FromInstance(moveSpeed)
-                     .AsSingle();
 
-           
+            Container.Bind<float>().WithId("MoveSpeed")
+                     .FromInstance(heroSettings.MoveSpeed);
+
+
+
+            Container.Bind<float>().WithId("Offset")
+                     .FromInstance(heroSettings.Offset);
+                     
+
+
             Container.Bind<IHeroMover>()
                      .To<HeroMoverImpl>()
                      .AsSingle();
