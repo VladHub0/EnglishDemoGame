@@ -3,6 +3,7 @@ using Zenject;
 using EnglishDemoGame.Scripts.GamePlay.Hero;
 using EnglishDemoGame.Scripts.GamePlay.Hero.Interface;
 using EnglishDemoGame.Scripts.GamePlay.Hero.Service;
+using EnglishDemoGame.Scripts.GamePlay.Hero.SO;
 
 namespace EnglishDemoGame.Scripts.Core.Installers
 {
