@@ -997,7 +997,7 @@
             "id": "ca0697d8-b79d-4a5b-bf76-ebca32bcb8c8",
             "actions": [
                 {
-                    "name": "HeroMovment",
+                    "name": "HeroMovement",
                     "type": "Value",
                     "id": "4ab4a295-fca7-4233-8383-890380d0c892",
                     "expectedControlType": "Vector2",
@@ -1014,7 +1014,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HeroMovment",
+                    "action": "HeroMovement",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -1025,7 +1025,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HeroMovment",
+                    "action": "HeroMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -1036,7 +1036,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HeroMovment",
+                    "action": "HeroMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -1047,7 +1047,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HeroMovment",
+                    "action": "HeroMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -1058,7 +1058,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HeroMovment",
+                    "action": "HeroMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

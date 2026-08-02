@@ -3,42 +3,59 @@ using UnityEngine.InputSystem;
 
 using EnglishDemoGame.Scripts.Core.Utils.InputUtils;
 using System;
+using Zenject;
+using EnglishDemoGame.Scripts.Platform.PC.SOInput;
 
 namespace EnglishDemoGame.Scripts.Platform.PC
 {
-    public class InputReaderPC : MonoBehaviour
+    public class InputReaderPC : IInitializable, IDisposable
     {
-        [SerializeField] InputActionAsset _inputActions;
-
-
-        private const string _mapName = "Hero";
-        private const string _moveActionName = "HeroMovment";
+        private readonly InputConfigSO _inputConfigSO;
 
         private InputActionMap _inputActionMap;
         private InputAction _moveAction;
 
         public event Action<Vector2> MoveEvent;
-        private void Awake()
-        {
-            if (!InputActionUtils.TryGetInputActionMap(_inputActions, _mapName, out _inputActionMap))
-            {
-                return;
-            }
 
-            if(!InputActionUtils.TryGetAction(_inputActionMap, _moveActionName, out _moveAction))
-            {
-                return;
-            }
+        [Inject]
+        public InputReaderPC(InputConfigSO inputConfigSO)
+        {
+            _inputConfigSO = inputConfigSO;
         }
 
-        private void OnEnable()
+        public void Initialize()
         {
+            if (!InputActionUtils.TryGetInputActionMap(_inputConfigSO.InputActions, _inputConfigSO.MapName, out _inputActionMap))
+            {
+                return;
+            }
+
+            if (!InputActionUtils.TryGetAction(_inputActionMap,_inputConfigSO.MoveActionName, out _moveAction))
+            {
+                return;
+            }
+
+
             _inputActionMap.Enable();
 
             _moveAction.performed += OnMovePerformed;
             _moveAction.canceled += OnMoveCanceled;
-            _moveAction.ReadValue<Vector2>();
+
         }
+
+        public void Dispose()
+        {
+            _inputActionMap?.Disable();
+
+            if (_moveAction != null)
+            {
+                _moveAction.performed -= OnMovePerformed;
+                _moveAction.canceled -= OnMoveCanceled;
+            }
+
+            
+        }
+
 
         private void OnMovePerformed(InputAction.CallbackContext context)
         {
@@ -49,14 +66,5 @@ namespace EnglishDemoGame.Scripts.Platform.PC
             MoveEvent?.Invoke(Vector2.zero);
         }
 
-        
-
-        private void OnDisable()
-        {
-             _inputActionMap.Disable();
-
-            _moveAction.performed -= OnMovePerformed;
-            _moveAction.canceled -= OnMoveCanceled;
-        }
     }
 }

@@ -1131,7 +1131,8 @@ PrefabInstance:
       propertyPath: m_UseFullKinematicContacts
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4264783076993494310, guid: eaa7e5374d02c2c42a3e05b485e00cb4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1721,6 +1722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98630b469348894b9c4e7ece924f50b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnglishDemoGame.Scripts.Core.Installers.InputInstaller
+  _inputActions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1 &1597352707
 GameObject:
   m_ObjectHideFlags: 0
