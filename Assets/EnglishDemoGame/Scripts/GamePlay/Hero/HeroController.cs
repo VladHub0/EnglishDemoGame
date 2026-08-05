@@ -1,7 +1,6 @@
 using EnglishDemoGame.Scripts.GamePlay.Hero.Interface;
 using EnglishDemoGame.Scripts.Platform.PC;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Zenject;
 
 namespace EnglishDemoGame.Scripts.GamePlay.Hero

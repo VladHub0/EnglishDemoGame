@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HeroSettings
   _moveSpeed: 5
   _offset: 0.5
+  HeroPrefab: {fileID: 1317682400530181163, guid: eaa7e5374d02c2c42a3e05b485e00cb4, type: 3}
