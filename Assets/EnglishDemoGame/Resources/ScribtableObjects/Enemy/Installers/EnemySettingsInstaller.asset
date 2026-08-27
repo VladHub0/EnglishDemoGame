@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: EnemySettingsInstaller
   m_EditorClassIdentifier: Assembly-CSharp::EnglishDemoGame.Scripts.Core.Installers.SOInstallers.EnemySettingsInstaller
   enemySettingsSO: {fileID: 11400000, guid: 610b08475e5d1594da79b0917928d804, type: 2}
+  enemyMovementSO: {fileID: 11400000, guid: ab22831542f6c1b41ac8813031ff4076, type: 2}

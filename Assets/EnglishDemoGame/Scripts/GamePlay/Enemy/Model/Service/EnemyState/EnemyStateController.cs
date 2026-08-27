@@ -7,7 +7,7 @@ using Zenject;
 
 namespace EnglishDemoGame.Scripts.GamePlay.Enemy.Service.EnemyState
 {
-    public class EnemyStateController : MonoBehaviour
+    public class EnemyStateController
     {
         private IEnemyState _currentState;
         private readonly Dictionary<EnemyStateType, IEnemyState> _states = new();
@@ -16,13 +16,7 @@ namespace EnglishDemoGame.Scripts.GamePlay.Enemy.Service.EnemyState
         private DiContainer _container;
 
 
-        public Transform GetTransform
-        {
-            get
-            {
-                return transform;
-            }
-        }
+        
 
         public EnemyStateType PreviousState => _previousState;
 

@@ -18,15 +18,10 @@ public class EnemyStateStart : IEnemyState
         _model = model;
     }
 
-
-    private float Speed { 
-        get { return _model.Speed; }   
-    }
-
     
     public void Enter()
     {
-        _movementService?.MoveToHero(Speed);
+        
     }
 
     public void Exit()
@@ -36,7 +31,7 @@ public class EnemyStateStart : IEnemyState
 
     public void Update()
     {
-        _movementService?.MoveToHero(Speed);
+        
     }
 
     public bool CanTransitionTo(EnemyStateType nextState)

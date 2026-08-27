@@ -1,11 +1,13 @@
 using EnglishDemoGame.Scripts.GamePlay.Enemy.Model;
 using EnglishDemoGame.Scripts.GamePlay.Enemy.Model.Interface;
-using EnglishDemoGame.Scripts.GamePlay.Enemy.Service.EnemyState;
-using EnglishDemoGame.Scripts.GamePlay.Enemy.Service.FabricEnemy;
-using EnglishDemoGame.Scripts.GamePlay.Enemy.Service.FabricEnemy.Interface;
+using EnglishDemoGame.Scripts.GamePlay.Enemy.Model.MovementModel;
+using EnglishDemoGame.Scripts.GamePlay.Enemy.Model.MovementModel.Interface;
+using EnglishDemoGame.Scripts.GamePlay.Enemy.Presenter;
+using EnglishDemoGame.Scripts.GamePlay.Enemy.Presenter.Interface;
 using EnglishDemoGame.Scripts.GamePlay.Enemy.Service.MoveService;
 using EnglishDemoGame.Scripts.GamePlay.Enemy.Service.MoveService.Interface;
-
+using EnglishDemoGame.Scripts.GamePlay.Enemy.View;
+using EnglishDemoGame.Scripts.GamePlay.Enemy.View.Interface;
 using UnityEngine;
 using Zenject;
 
@@ -15,22 +17,46 @@ namespace EnglishDemoGame.Scripts.Core.Installers.SOInstallers
     public class EnemySettingsInstaller : ScriptableObjectInstaller<EnemySettingsInstaller>
     {
         [SerializeField] private EnemySettingsSO enemySettingsSO;
+        [SerializeField] private EnemyMovementSO enemyMovementSO;
         public override void InstallBindings()
         {
-            Container.BindInstance(enemySettingsSO).AsSingle();
+            EnemyModelBindings();
+            EnemyServiceBindings();
+            EnemyPresenterBindings();
+            EnemyViewBindings();
+         
+        }
 
-            Container.Bind<IEnemyStateFactory>().To<EnemyStateFactory>().AsSingle();
-            Container.Bind<EnemyStateController>().FromComponentOnRoot().AsTransient();
-            Container.Bind<IEnemyModel>().To<EnemyModel>().AsTransient();
+        public void EnemyModelBindings()
+        {
 
+            Container.BindInstance(enemyMovementSO)
+                .AsSingle();
+
+            Container.Bind<IEnemyMovementModel>()
+                .To<EnemyMovementModel>()
+                .AsSingle();  
+        }
+
+        public void EnemyServiceBindings()
+        {
             Container.Bind<IEnemyMovementService>()
                 .To<EnemyMovementService>()
                 .AsSingle();
+        }
+        public void EnemyPresenterBindings()
+        {
+            Container.Bind<IEnemyPresenter>()
+                .To<EnemyBasePresenter>()
+                .AsSingle();
+        }
 
-            Container.Bind<Transform>()
-                .FromResolveGetter<EnemyStateController>(c => c.GetTransform)
-                .AsSingle()
-                .WhenInjectedInto<EnemyMovementService>();
+        public void EnemyViewBindings()
+        {
+            Container.Bind<IEnemyView>()
+                .To<EnemyBaseView>()
+                .FromComponentOnRoot()
+                .AsSingle();
         }
     }
 }

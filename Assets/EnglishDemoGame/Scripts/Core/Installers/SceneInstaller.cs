@@ -1,7 +1,10 @@
 using EnglishDemoGame.Scripts.GamePlay.Hero;
 using EnglishDemoGame.Scripts.GamePlay.Hero.SpawnHero;
+using EnglishDemoGame.Scripts.GamePlay.TargetProvider;
+using EnglishDemoGame.Scripts.GamePlay.TargetProvider.Interface;
 using UnityEngine;
 using Zenject;
+using Zenject.SpaceFighter;
 
 namespace EnglishDemoGame.Scripts.Core.Installers
 {
@@ -12,6 +15,8 @@ namespace EnglishDemoGame.Scripts.Core.Installers
         public override void InstallBindings()
         {
             Container.BindInstance(HeroSpawnPosition).WithId("HeroSpawnPoint");
+
+            Container.Bind<ITargetProvider>().To<PlayerTargetProvider>().AsSingle();
 
             Container.Bind<HeroController>()
                      .FromSubContainerResolve()
