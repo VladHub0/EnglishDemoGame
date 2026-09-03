@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e6589720da476459dc6dd71624b071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Zenject::Zenject.ProjectContext
-  _scriptableObjectInstallers: []
+  _scriptableObjectInstallers:
+  - {fileID: 11400000, guid: bd1c9713bd93e2942983e2af03e15adc, type: 2}
   _monoInstallers: []
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 1
@@ -53,7 +54,7 @@ MonoBehaviour:
   _settings:
     _ensureDeterministicDestructionOrderOnApplicationQuit: 0
     _displayWarningWhenResolvingDuringInstall: 1
-    _validationRootResolveMethod: 0
+    _validationRootResolveMethod: 1
     _validationErrorResponse: 0
     _signalSettings:
       _defaultSyncMode: 0

@@ -6,7 +6,7 @@ using Zenject;
 
 namespace EnglishDemoGame.Scripts.GamePlay.Enemy.View
 {
-    public class EnemyBaseView : MonoBehaviour, IEnemyView
+    public class EnemyBaseView : MonoBehaviour, IEnemyView, IEnemyPositionProvider
     {
         private IEnemyPresenter _presenter;
 

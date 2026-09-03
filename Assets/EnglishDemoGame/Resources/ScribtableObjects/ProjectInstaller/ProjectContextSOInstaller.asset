@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 564e3c409aba6b34297d79ed8d8ad384, type: 3}
-  m_Name: EnemySettings
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackSettingsSO
-  maxDamage: 50
-  baseDamage: 10
-  attackRange: 2
-  attackCooldown: 1
+  m_Script: {fileID: 11500000, guid: 852733b886c626340a7ac4a6b0f0bd08, type: 3}
+  m_Name: ProjectContextSOInstaller
+  m_EditorClassIdentifier: Assembly-CSharp::EnglishDemoGame.Scripts.Core.Installers.SOInstallers.ProjectContextSOInstaller

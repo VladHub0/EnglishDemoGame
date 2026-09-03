@@ -7,21 +7,23 @@ using System.Collections.Generic;
 using Zenject;
 
 
+
 namespace EnglishDemoGame.Scripts.GamePlay.Enemy.Service.EnemyFactory
 {
-    public class EnemyStateFactory : PlaceholderFactory<EnemyStateType, IEnemyState>, IEnemyStateFactory
+    public class EnemyStateFactory : PlaceholderFactory<EnemyStateType, IEnemyState>, IEnemyStateFactory, IValidatable
     {
-        private readonly DiContainer _container;
+        private readonly IInstantiator _container;
         private readonly Dictionary<EnemyStateType, Type> _stateTypes;
 
         [Inject]
-        public EnemyStateFactory(DiContainer container)
+        public EnemyStateFactory(IInstantiator container)
         {
             _container = container;
             _stateTypes = new Dictionary<EnemyStateType, Type>
-            {
-                { EnemyStateType.Basic, typeof(EnemyBasicState) }
-            };
+{
+    { EnemyStateType.Chase, typeof(EnemyChaseState) },
+    { EnemyStateType.Attack, typeof(EnemyAttackState) }
+};
         }
 
         public override IEnemyState Create(EnemyStateType stateType)
@@ -38,10 +40,6 @@ namespace EnglishDemoGame.Scripts.GamePlay.Enemy.Service.EnemyFactory
         public override void Validate()
         {
            
-            foreach (var type in _stateTypes.Values)
-            {
-                _container.Instantiate(type);
-            }
         }
     }
 }

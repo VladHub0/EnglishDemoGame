@@ -1,3 +1,4 @@
+using EnglishDemoGame.Scripts.GamePlay.CommonInterface;
 using EnglishDemoGame.Scripts.GamePlay.Hero;
 using EnglishDemoGame.Scripts.GamePlay.Hero.SpawnHero;
 using EnglishDemoGame.Scripts.GamePlay.TargetProvider;
@@ -18,12 +19,17 @@ namespace EnglishDemoGame.Scripts.Core.Installers
 
             Container.Bind<ITargetProvider>().To<PlayerTargetProvider>().AsSingle();
 
+           
             Container.Bind<HeroController>()
-                     .FromSubContainerResolve()
-                     .ByNewContextPrefab(heroPrefab)
-                     .AsSingle();
+                .FromSubContainerResolve()
+                .ByNewContextPrefab(heroPrefab)
+                .AsSingle();
 
-
+            
+            Container.Bind<IDamageable>()
+                .FromMethod(ctx => ctx.Container.Resolve<HeroController>())
+                .AsSingle();
+            
             Container.BindInterfacesAndSelfTo<HeroSpawnManager>()
                      .AsSingle().NonLazy();
         }
