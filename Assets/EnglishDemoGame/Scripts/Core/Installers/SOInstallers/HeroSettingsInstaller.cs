@@ -1,3 +1,4 @@
+using EnglishDemoGame.Scripts.GamePlay.CommonInterface;
 using EnglishDemoGame.Scripts.GamePlay.Hero;
 using EnglishDemoGame.Scripts.GamePlay.Hero.Interface;
 using EnglishDemoGame.Scripts.GamePlay.Hero.Service;
@@ -15,9 +16,8 @@ namespace EnglishDemoGame.Scripts.Core.Installers.SOInstallers
         public override void InstallBindings()
         {
             Container.BindInstance(HeroSettings).AsSingle();
-
-
-            Container.Bind<HeroController>()
+            
+            Container.BindInterfacesAndSelfTo<HeroController>()
                     .FromComponentOnRoot()
                     .AsSingle();
 
